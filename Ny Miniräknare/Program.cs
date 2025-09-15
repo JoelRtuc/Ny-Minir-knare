@@ -1,4 +1,6 @@
-﻿namespace Ny_Miniräknare
+﻿using System.Reflection;
+
+namespace Ny_Miniräknare
 {
     internal class Program
     {
@@ -12,29 +14,47 @@
 
             Console.WriteLine("Vilka nummer vill du räkna med?");
 
-            int.TryParse(Console.ReadLine(), out a);
+            if(!int.TryParse(Console.ReadLine(), out a))
+            {
+                Console.WriteLine("Ogiltigt");
+
+                Main();
+            }
             Console.WriteLine("och?");
 
-            int.TryParse(Console.ReadLine(), out b);
-
-            switch (räknesätt)
+            if (!int.TryParse(Console.ReadLine(), out b))
             {
-                case "+":
-                    Addition(a, b);
-                    break;
-                case "-":
-                    Subtraktion(a, b);
-                    break;
-                case "*":
-                    Multiplikation(a, b);
-                    break;
-                case "/":
-                    Division(a, b);
-                    break;
-                default:
-                    Console.WriteLine("Ogiltigt räknesätt");
-                    Main();
-                    break;
+                Console.WriteLine("Ogiltigt");
+
+                Main();
+            }
+
+            try
+            {
+                switch (räknesätt)
+                {
+                    case "+":
+                        Addition(a, b);
+                        break;
+                    case "-":
+                        Subtraktion(a, b);
+                        break;
+                    case "*":
+                        Multiplikation(a, b);
+                        break;
+                    case "/":
+                        Division(a, b);
+                        break;
+                    default:
+                        Console.WriteLine("Ogiltigt räknesätt");
+                        Main();
+                        break;
+                }
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("kan inte dela med 0!");
+                Main();
             }
 
             void Addition(int a, int b)
