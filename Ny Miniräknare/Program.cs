@@ -12,18 +12,10 @@
 
             Console.WriteLine("Vilka nummer vill du räkna med?");
 
-            try
-            {
-                a = int.Parse(Console.ReadLine());
-                Console.WriteLine("och?");
+            int.TryParse(Console.ReadLine(), out a);
+            Console.WriteLine("och?");
 
-                b = int.Parse(Console.ReadLine());
-            }
-            catch
-            {
-                Console.WriteLine("Ogiltigt");
-                Main();
-            }
+            int.TryParse(Console.ReadLine(), out b);
 
             switch (räknesätt)
             {
