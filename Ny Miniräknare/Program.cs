@@ -41,6 +41,7 @@
                     break;
                 default:
                     Console.WriteLine("Ogiltigt räknesätt");
+                    Main();
                     break;
             }
 
